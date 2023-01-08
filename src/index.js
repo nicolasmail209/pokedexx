@@ -1,5 +1,5 @@
 let datos;
-let datosPokemonSeleccionado;
+let pokemon;
 
 function mostrarTotalPokemones(totalPokemones){
     $totalPokemones = document.querySelector("#totalPokemones");
@@ -7,26 +7,26 @@ function mostrarTotalPokemones(totalPokemones){
 }
 
 
-function mostrarHabilidades(datosPokemonSeleccionado){
-    let habilidades = [];// = datosPokemonSeleccionado.abilities[0].ability.name;
-    datosPokemonSeleccionado.abilities.forEach(element => {
+function traerHabilidades(pokemon){
+    let habilidades = [];// = pokemon.abilities[0].ability.name;
+    pokemon.abilities.forEach(element => {
         habilidades.push(element.ability.name);
     })
     //console.log(habilidades);
     return habilidades;
 }
 
-function mostrarExperiencia(datosPokemonSeleccionado){
-    let experiencia = datosPokemonSeleccionado.base_experience;
+function traerExperiencia(pokemon){
+    let experiencia = pokemon.base_experience;
     return experiencia;
 }
 
-function mostrarFoto(datosPokemonSeleccionado){
-    let foto = datosPokemonSeleccionado.sprites.front_default;
+function traerFoto(pokemon){
+    let foto = pokemon.sprites.front_default;
     return foto;
 }
 
-function mostrarDatosPokemonSeleccionado(datosPokemonSeleccionado){
+function mostrarDatosPokemonSeleccionado(pokemon){
     //$detallePokemon = document.querySelector("#detallePokemon");
     //$detallePokemon.innerHTML = "";
     $habilidades = document.querySelector("#habilidades");
@@ -34,9 +34,9 @@ function mostrarDatosPokemonSeleccionado(datosPokemonSeleccionado){
     $experiencia = document.querySelector("#experiencia");
     $experiencia.innerHTML = "";
     $foto = document.querySelector("#foto");
-    let habilidades = mostrarHabilidades(datosPokemonSeleccionado);
-    let experiencia = mostrarExperiencia(datosPokemonSeleccionado);
-    let foto = mostrarFoto(datosPokemonSeleccionado);
+    let habilidades = traerHabilidades(pokemon);
+    let experiencia = traerExperiencia(pokemon);
+    let foto = traerFoto(pokemon);
     //let div = document.createElement("div");
     //div.innerText = habilidades + experiencia + foto;
 
@@ -63,8 +63,8 @@ function traerDatosPokemonSeleccionado(url){
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      datosPokemonSeleccionado = data;
-      mostrarDatosPokemonSeleccionado(datosPokemonSeleccionado);
+      pokemon = data;
+      mostrarDatosPokemonSeleccionado(pokemon);
     });
 }
 
