@@ -26,37 +26,57 @@ function traerFoto(pokemon){
     return foto;
 }
 
-function mostrarDatosPokemonSeleccionado(pokemon){
-    //$detallePokemon = document.querySelector("#detallePokemon");
-    //$detallePokemon.innerHTML = "";
+function mostrarHabilidades(pokemon){
     $habilidades = document.querySelector("#habilidades");
     $habilidades.innerHTML = "";
-    $experiencia = document.querySelector("#experiencia");
-    $experiencia.innerHTML = "";
-    $foto = document.querySelector("#foto");
     let habilidades = traerHabilidades(pokemon);
-    let experiencia = traerExperiencia(pokemon);
-    let foto = traerFoto(pokemon);
-    //let div = document.createElement("div");
-    //div.innerText = habilidades + experiencia + foto;
-
-    let $li1 = document.createElement("li");
-    $li1.innerText = "Habilidades";
-    $habilidades.appendChild($li1);
+    let $li = document.createElement("li");
+    $li.innerText = "Habilidades";
+    $habilidades.appendChild($li);
     habilidades.forEach(element =>{
         let li = document.createElement("li");
         li.innerText = element;
         $habilidades.appendChild(li);
     })
+}
 
-    let $li2 = document.createElement("li");
-    $li2.innerText = "Experiencia";
-    $experiencia.appendChild($li2);
-    let $li3 = document.createElement("li");
-    $li3.innerText = experiencia
-    $experiencia.appendChild($li3);
+function mostrarExperiencia(pokemon){
+    $experiencia = document.querySelector("#experiencia");
+    $experiencia.innerHTML = "";
+    let experiencia = traerExperiencia(pokemon);
+    let $tituloExperiencia = document.createElement("li");
+    $tituloExperiencia.innerText = "Experiencia";
+    $experiencia.appendChild($tituloExperiencia);
+    let $valorExperiencia = document.createElement("li");
+    $valorExperiencia.innerText = experiencia
+    $experiencia.appendChild($valorExperiencia);
+}
 
+function mostrarFoto(pokemon){
+    $foto = document.querySelector("#foto");
+    let foto = traerFoto(pokemon);
     $foto.src = foto;
+}
+
+function mostrarDatosPokemonSeleccionado(pokemon){
+    //$detallePokemon = document.querySelector("#detallePokemon");
+    //$detallePokemon.innerHTML = "";
+    mostrarHabilidades(pokemon);
+    mostrarExperiencia(pokemon);
+    mostrarFoto(pokemon);
+    
+    
+    
+    
+    
+    //let div = document.createElement("div");
+    //div.innerText = habilidades + experiencia + foto;
+
+    
+
+    
+
+    
 }
 
 function traerDatosPokemonSeleccionado(url){
