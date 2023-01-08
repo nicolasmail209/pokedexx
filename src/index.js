@@ -8,11 +8,10 @@ function mostrarTotalPokemones(totalPokemones){
 
 
 function traerHabilidades(pokemon){
-    let habilidades = [];// = pokemon.abilities[0].ability.name;
+    let habilidades = [];
     pokemon.abilities.forEach(element => {
         habilidades.push(element.ability.name);
     })
-    //console.log(habilidades);
     return habilidades;
 }
 
@@ -59,24 +58,9 @@ function mostrarFoto(pokemon){
 }
 
 function mostrarDatosPokemonSeleccionado(pokemon){
-    //$detallePokemon = document.querySelector("#detallePokemon");
-    //$detallePokemon.innerHTML = "";
     mostrarHabilidades(pokemon);
     mostrarExperiencia(pokemon);
     mostrarFoto(pokemon);
-    
-    
-    
-    
-    
-    //let div = document.createElement("div");
-    //div.innerText = habilidades + experiencia + foto;
-
-    
-
-    
-
-    
 }
 
 function traerPokemon(url){
@@ -89,7 +73,6 @@ function traerPokemon(url){
 }
 
 function mostrarDetallePokemon(e){
-    //$detallePokemon = document.querySelector("#detallePokemon");
     let url;
     datos.results.forEach(element =>{
         if(element.name === e.srcElement.innerText){
@@ -97,8 +80,6 @@ function mostrarDetallePokemon(e){
         }
     })
     traerPokemon(url);
-    //$detallePokemon.innerText = url;
-    //console.log(e.srcElement.innerText)
 }
 
 function mostrarListadoPokemones(listadoPokemones){
@@ -109,11 +90,10 @@ function mostrarListadoPokemones(listadoPokemones){
         div.innerText = element.name;
         $listadoPokemones.appendChild(div);
     });
-    //$listadoPokemones.innerText = listadoPokemones[0].name;
 }
 
 function cambiarPagina(e){
-    //console.log(e.srcElement.innerText);
+    
     if(e.srcElement.innerText === "Pagina siguiente" && datos.next != null){
         $listadoPokemones = document.querySelector("#listadoPokemones");
         $habilidades = document.querySelector("#habilidades");
@@ -151,7 +131,6 @@ function iniciar(direccion = "https://pokeapi.co/api/v2/pokemon/") {
     .then((response) => response.json())
     .then((data) => {
       datos = data;
-      //console.log(datos);
       mostrarTotalPokemones(datos.count);
       mostrarListadoPokemones(datos.results);
       cargarAnteriorYSiguiente();
