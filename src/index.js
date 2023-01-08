@@ -79,7 +79,7 @@ function mostrarDatosPokemonSeleccionado(pokemon){
     
 }
 
-function traerDatosPokemonSeleccionado(url){
+function traerPokemon(url){
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
@@ -96,7 +96,7 @@ function mostrarDetallePokemon(e){
             url = element.url;
         }
     })
-    traerDatosPokemonSeleccionado(url);
+    traerPokemon(url);
     //$detallePokemon.innerText = url;
     //console.log(e.srcElement.innerText)
 }
